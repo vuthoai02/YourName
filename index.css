@@ -1,0 +1,323 @@
+@import url('http://fonts.cdnfonts.com/css/itim');
+@import url('http://fonts.cdnfonts.com/css/jacques-francois');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('http://fonts.cdnfonts.com/css/irish-grover');
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-image: url(./assets/image/background.png);
+  background-attachment: fixed;
+  background-size: 100% 80vh;
+  background-repeat: no-repeat;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+  
+}
+#header{
+  background-color: rgba(0, 0, 0, 0.377);
+  height: 80vh;
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+#navigation {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  height: 7%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  z-index: 999;
+}
+
+#navigation > a{
+  font-size: larger;
+  font-family: 'Inter';
+  text-align: center;
+  line-height: 29px;
+}
+#navigation > a span{
+  letter-spacing: 0.35em;
+}
+#navigation ul li{
+  display: inline-block;
+  list-style-type: none;
+  margin:0 10px;
+  font-family: 'Itim', sans-serif;
+  font-size: 24px;
+}
+
+.navActive{
+  border-bottom: 3px solid white;
+}
+
+#navigation ul li:hover{
+  border-bottom: 3px solid white;
+}
+
+#header_content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+
+}
+#header_content .header_content_box{
+  width: 40%;
+  color: #fff;
+  font-family: 'Itim', sans-serif;
+}
+#header_content .header_content_box p{
+  text-align: justify;
+  font-size: 20px;
+}
+#header_content .header_content_box a{
+  background-color: #F56A6A;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: block;
+  width: 100px;
+  margin-top: 15px;
+  font-family: 'Jacques Francois', sans-serif;
+}
+#numbercount{
+  display: flex;
+  justify-content: space-around;
+  font-size: 40px;
+}
+
+#story, #contact{
+  background-color: #fff;
+  padding: 20px 30px;
+}
+
+h2{
+  text-align: center;
+  font-family: 'Irish Grover', sans-serif;         
+}
+
+#timeline {
+  position: relative;
+  width: 30%;
+}
+
+/* The actual timeline (the vertical ruler) */
+#timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #0DA8FF;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 20px;
+  position: relative;
+  background-color: inherit;
+  width: 40%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  /* right: -17px; */
+  left: -4px;
+  background-color: #0DA8FF;
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Add arrows to the right container (pointing left) */
+.container::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* The actual content */
+.content {
+  padding: 10px 20px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+#timeline p{
+  font-weight: 600;
+  color: gray;
+}
+
+.active {
+  color: black !important;
+}
+
+#Box{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+#Box > div:last-of-type{
+  width: 45%;
+  text-align: justify;
+}
+
+#text{
+  height: 276px;
+}
+
+#form{
+  display: flex;
+  justify-content: space-around;
+}
+
+#input{
+  display: flex;
+  width: 60%;
+  justify-content: center;
+}
+
+#input ::-webkit-input-placeholder{
+  font-family: 'Itim', sans-serif;
+  color: black;
+  margin: 0;
+}
+
+#input div:first-of-type{
+  display: flex;
+  flex-direction: column;
+}
+
+#input input{
+  padding: 5px;
+  margin-top: 15px;
+  border: 1px solid rgb(177, 175, 175);
+  border-radius: 2px;
+  width: 200px;
+}
+
+#submit{
+  font-family: 'Itim', sans-serif;
+  background-color: #ff4949;
+  border-radius: 25px;
+  border: none;
+  margin-top: 15px;
+  width: 100px;
+  padding: 5px 0;
+  color: white;
+}
+#input textarea{
+  border: 1px solid rgb(177, 175, 175);
+  border-radius: 2px;
+  margin-left: 20px;
+  height: 240px;
+  width: 350px;
+  margin-top: 15px;
+  padding: 5px;
+}
+
+#figures{
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0 -550px;
+}
+
+#figures h2{
+  color: #fff;
+  text-shadow: 1px 1px gray;
+}
+
+#figure{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.figureImg{
+  width: 250px;
+  height: 350px;
+}
+
+.contentFig{
+  width: 48.5%;
+}
+
+.nameBox{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.nameBox button{
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.figPara{
+  width: 92%;
+  text-align: justify;
+  color: white;
+  font-family: 'Itim', sans-serif;
+}
+
+.nameFig{
+  font-size: larger;
+  font-weight: 600;
+  color: #fff;
+}
+
+#footer{
+  background-image: url(./assets/image/backgroundFooter.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -43vh;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#footer #logo{
+  width: 100px;
+  margin: 20px;
+}
+
+#footer .icon{
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+#footer p{
+  color: #fff;
+  text-align: right;
+  margin: 10px;  
+}
