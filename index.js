@@ -1,13 +1,36 @@
 //----------------Change background when scrolling-------------------
 const nav = document.getElementById("navigation");
+const sideBar = document.querySelectorAll("#navigation>ul")[0]
+
+const w = window.innerWidth;
+
+if(w < 756){
+  sideBar.className = "hidden";
+  const openNav = document.createElement("div");
+  openNav.innerHTML = "="
+  openNav.id = "openNav";
+  openNav.addEventListener("click", () => openSideBar(openNav));
+  document.body.appendChild(openNav);
+}
+
+function openSideBar(openNav){
+  if(sideBar.id){
+    sideBar.className = "hidden";
+    sideBar.removeAttribute("id");
+    openNav.innerHTML = "="
+  } else{
+    sideBar.removeAttribute("className");
+    sideBar.id = "sideBar";
+    openNav.innerHTML = "X"
+  }
+}
 
 window.onscroll = function () { 
   "use strict";
-  if (window.scrollY >= 100 ) {
+  if (window.scrollY >= 200 ) {
       nav.style.backgroundColor = "black"
-  } 
-  else {
-      nav.style.backgroundColor = "transparent";
+  } else{
+    nav.style.backgroundColor = "transparent"
   }
 };
 
@@ -41,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // ------------Story--------------
 
 const text = document.getElementById("text");
+const Box = document.getElementById("Box");
 
 var intinalActive = "link";
 
@@ -71,6 +95,39 @@ timelineList.forEach(elm => {
   container.appendChild(content);
   document.querySelector("#timeline").appendChild(container);
 })
+var timeLineNumb = 0;
+if(w < 756){
+  const storyBox = document.createElement("div");
+  const strText = document.createElement("p");
+  const prevSt = document.createElement('button');
+  const nextSt = document.createElement('button');
+
+  const handleChangeStr = (type) => {
+    if(type == 'prev'){
+      timeLineNumb = timeLineNumb == 0?timelineList.length -1:timeLineNumb-1;
+    } else{
+      timeLineNumb = (timeLineNumb == timelineList.length-1)?0:timeLineNumb+1;
+    }
+    strText.innerText = timelineList[timeLineNumb].title;
+    text.innerText = timelineList[timeLineNumb].content;
+  }
+
+  prevSt.innerText = "<";
+  strText.innerText = timelineList[timeLineNumb].title;
+  nextSt.innerText = ">";
+  prevSt.addEventListener("click", () => handleChangeStr('prev'));
+  nextSt.addEventListener("click", () => handleChangeStr('next'));
+
+  text.style.textAlign = "justify";
+  text.style.fontSize = "20px";
+
+  storyBox.id = "storyBox"
+
+  storyBox.appendChild(prevSt);
+  storyBox.appendChild(strText);
+  storyBox.appendChild(nextSt);
+  Box.appendChild(storyBox)
+}
 
 // ------------Figures-------------
 const figures = document.getElementById("figures");
@@ -88,6 +145,7 @@ const figureList = [
 let figureNumb = 0;
 
 figures.style.backgroundImage = `url(${figureList[figureNumb].img})`
+if(w < 756) figures.style.backgroundPositionX = "-100px"
 
 const img = document.createElement("img");
 const content = document.createElement("div");
@@ -106,23 +164,11 @@ nameBox.className = "nameBox";
 nameFig.innerText = figureList[figureNumb].name;
 nameFig.className = "nameFig";
 
-const handlePrev = () => {
-  if(figureNumb == 0){
-    figureNumb = figureList.length -1;
+const handleChangeFig = (type) => {
+  if(type == 'prev'){
+    figureNumb = figureNumb == 0?figureList.length -1:figureNumb-1;
   } else{
-    figureNumb -= 1;
-  }
-  figures.style.backgroundImage = `url(${figureList[figureNumb].img})`;
-  img.src = figureList[figureNumb].img;
-  nameFig.innerText = figureList[figureNumb].name;
-  figPara.innerText = figureList[figureNumb].intro;
-}
-
-const handleNext = () => {
-  if(figureNumb == figureList.length-1){
-    figureNumb = 0;
-  } else{
-    figureNumb += 1;
+    figureNumb = (figureNumb == figureList.length-1)?0:figureNumb+1;
   }
   figures.style.backgroundImage = `url(${figureList[figureNumb].img})`;
   img.src = figureList[figureNumb].img;
@@ -132,10 +178,10 @@ const handleNext = () => {
 
 prev.innerText = "<";
 prev.title = "Xem nhân vật khác";
-prev.addEventListener("click", handlePrev);
+prev.addEventListener("click", () => handleChangeFig('prev'));
 next.innerText = ">";
 next.title = "Xem nhân vật khác";
-next.addEventListener("click", handleNext);
+next.addEventListener("click", () => handleChangeFig('next'));
 
 figPara.innerText = figureList[figureNumb].intro;
 figPara.className = 'figPara';
@@ -148,3 +194,4 @@ content.appendChild(figPara);
 figure.appendChild(img);
 figure.appendChild(content);
 
+// ====================RESOINSIVE====================
