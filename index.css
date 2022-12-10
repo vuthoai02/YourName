@@ -349,7 +349,6 @@ h2 {
     top: -14px;
     padding-right: 10px;
     width: 200px;
-    z-index: 999;
   }
   #openNav {
     position: fixed;
